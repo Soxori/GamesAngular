@@ -1,0 +1,25 @@
+<form>
+  <div class="form-group">
+    <input type="name" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name of the game">
+  </div>
+  <div class="form-group">
+    <input type="rating" name="rating" class="form-control" id="rating" placeholder="Rating">
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="addGame()">Create game</button>
+</form>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Name</th>
+    <th scope="col">Rating</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let game of games">
+    <td>{{game.id}}</td>
+    <td>{{game.name}}</td>
+    <td>{{game.rating}}d</td>
+  </tr>
+  </tbody>
+</table>
