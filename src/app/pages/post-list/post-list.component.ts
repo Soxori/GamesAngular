@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./post-list.component.scss']
 })
 export class PostListComponent implements OnInit {
-  title = 'Game';
+  title = 'PostList';
 
   games: Games[] = [];
   url = 'http://127.0.0.1:8080/Games/api/games';
