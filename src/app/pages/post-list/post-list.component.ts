@@ -12,7 +12,7 @@ export class PostListComponent implements OnInit {
   title = 'PostList';
 
   games: Games[] = [];
-  url = 'http://127.0.0.1:8080/Games/api/games';
+  url = '/api/games';
 
   id = '';
   name = '';

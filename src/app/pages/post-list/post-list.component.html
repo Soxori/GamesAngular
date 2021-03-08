@@ -5,7 +5,7 @@
   <div class="form-group">
     <input type="rating" name="rating" [(ngModel)]="rating" class="form-control" id="rating" placeholder="Rating">
   </div>
-  <button type="submit" class="btn btn-primary" (click)="addGame()">Create game</button>
+  <button type="submit" class="btn btn-primary" (click)="addGame()">Add game to list</button>
 </form>
 <table class="table">
   <thead>
@@ -13,14 +13,17 @@
     <th scope="col">ID</th>
     <th scope="col">Name</th>
     <th scope="col">Rating</th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let game of games">
     <td>{{game.id}}</td>
     <td>{{game.name}}</td>
-    <td>{{game.rating}}</td>
-    <td><button (click)="checkGame(game.id)">Detail</button></td>
+    <td>{{game.rating}}%</td>
+    <td><button class="btn btn-secondary" (click)="checkGame(game.id)">Detail</button></td>
   </tr>
   </tbody>
 </table>
