@@ -25,7 +25,6 @@ export class PostListComponent implements OnInit {
 
   addGame(): void {
     const body = {
-      id: this.id,
       name: this.name,
       rating: this.rating,
     };
@@ -42,7 +41,6 @@ export class PostListComponent implements OnInit {
   checkGame(id: number): void {
     this.router.navigateByUrl('detail/' + id);
   }
-
   ngOnInit(): void {
     this.http.get(this.url).subscribe(
       (data: Games[]) => {
