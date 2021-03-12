@@ -13,8 +13,6 @@ export class PostListComponent implements OnInit {
 
   games: Games[] = [];
   url = '/api/games';
-
-  id = '';
   name = '';
   rating = '';
 
