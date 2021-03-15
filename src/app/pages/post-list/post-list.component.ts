@@ -12,12 +12,12 @@ export class PostListComponent implements OnInit {
   title = 'PostList';
 
   games: Games[] = [];
-  url = '/api/games';
+  url = '/api/games/';
   name = '';
   rating = '';
 
   constructor(private http: HttpClient, private router: Router) {
-    this.ngOnInit();
+
   }
 
 
@@ -29,7 +29,7 @@ export class PostListComponent implements OnInit {
     this.http.post(this.url, body, {observe: 'response'}).subscribe(
       (data) => {
         console.log(data);
-        this.ngOnInit();
+        this.updateList();
       },
       (error: HttpErrorResponse) => {
         console.log(error);
@@ -37,9 +37,23 @@ export class PostListComponent implements OnInit {
     );
   }
   checkGame(id: number): void {
-    this.router.navigateByUrl('detail/' + id);
+    this.router.navigateByUrl('game/' + id);
+  }
+  deleteGame(id: number): void {
+    this.http.delete(this.url + id).subscribe(
+      (data) => {
+        console.log(data);
+        this.updateList();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
   ngOnInit(): void {
+    this.updateList();
+  }
+  updateList(): void {
     this.http.get(this.url).subscribe(
       (data: Games[]) => {
         this.games = data;

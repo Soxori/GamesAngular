@@ -8,13 +8,15 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { GameDetailComponent } from './game-detail/game-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostListComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    GameDetailComponent
   ],
   imports: [
     BrowserModule,

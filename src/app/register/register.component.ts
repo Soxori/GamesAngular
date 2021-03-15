@@ -11,6 +11,7 @@ import {User} from '../Models/user';
 export class RegisterComponent implements OnInit {
 
   private url = '/api/user';
+  errormassage = '';
   username = '';
   password = '';
   users: User[] = [];
@@ -18,18 +19,20 @@ export class RegisterComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router){
 
   }
-  createUser() {
-    this.router.navigate(['/login']);
-    this.http.post(this.url, {password: this.password, username: this.username, }).subscribe(
+  createUser(): void {
+    this.http.post(this.url + '/register', {password: this.password, username: this.username, }).subscribe(
       (data: any) => {
         this.router.navigate(['/login']);
-      }, (error) => {
+        console.log(data);
+      }, (error: HttpErrorResponse) => {
         console.log(error);
+        if (error.status === 400) {
+        this.errormassage = 'Tento username je zabrany';
+        }
       }
     );
   }
-
-  ngOnInit() {
+  ngOnInit(): void {
     this.http.get(this.url).subscribe(
       (data: User[]) => {
         this.users = data;

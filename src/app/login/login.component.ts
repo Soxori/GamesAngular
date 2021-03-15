@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  private url = 'api/user/login';
   username = '';
   password = '';
 
@@ -15,13 +16,17 @@ export class LoginComponent implements OnInit {
 
   }
 
-  loginButton() {
-    if(this.password === this.password && this.username === this.username) {
-      this.router.navigate(['/posts']);
-    }
+  loginButton(): void {
+    this.http.post(this.url, {password: this.password, username: this.username, }).subscribe(
+      (data: any) => {
+        this.router.navigate(['/posts']);
+      }, (error) => {
+        console.log(error);
+      }
+    );
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
 
   }
 
