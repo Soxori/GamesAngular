@@ -1,2 +1,18 @@
-{{game.name}} <br>
-ID = {{game.id}}
+<div class="jumbotron jumbotron-fluid">
+  <button type="submit" class="btn btn-secondary" routerLink="/posts">Return</button>
+  <div class="container">
+    <h1 class="display-4">{{game.name}}</h1>
+    <p class="lead">ID - {{game.id}}</p>
+    <p class="lead">RATING - {{game.rating}}%</p>
+    <form>
+      <div class="form-group">
+        <h3>Edit</h3>
+        <input type="name" class="form-control" name="name" [(ngModel)]="name" id="exampleInputusername1" aria-describedby="emailHelp" placeholder="Edit Name">
+      </div>
+      <div class="form-group">
+        <input type="rating" class="form-control" name="rating" [(ngModel)]="rating"id="exampleInputPassword1" placeholder="Edit Rating">
+      </div>
+    </form>
+    <button type="submit" class="btn btn-secondary" routerLink="/posts" (click)="editGame()">Edit</button>
+  </div>
+</div>

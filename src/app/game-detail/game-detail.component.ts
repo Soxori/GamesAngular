@@ -11,7 +11,20 @@ import {HttpClient} from '@angular/common/http';
 export class GameDetailComponent implements OnInit {
   private url = 'api/games/';
   game: Games;
+  name = '';
+  rating = '';
   constructor(private activatedRoute: ActivatedRoute, private http: HttpClient) { }
+
+  editGame(): void {
+    this.http.put(this.url, {name: this.name, rating: this.rating}).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(p => {
